@@ -1,0 +1,38 @@
+export const promos = [
+  {
+    id: 1,
+    title: 'Flash Sale Weekend',
+    subtitle: 'Diskon hingga 40% untuk semua liquid premium',
+    badge: 'HOT DEAL',
+    discount: '40%',
+    validUntil: '2026-07-05',
+    bgGradient: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+  },
+  {
+    id: 2,
+    title: 'New Arrival Pod System',
+    subtitle: 'Koleksi pod terbaru dari brand ternama sudah tersedia',
+    badge: 'BARU',
+    discount: '15%',
+    validUntil: '2026-07-15',
+    bgGradient: 'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+  },
+  {
+    id: 3,
+    title: 'Bundle Hemat Ramadan',
+    subtitle: 'Beli device + liquid, hemat hingga Rp 100.000',
+    badge: 'BUNDLING',
+    discount: 'Rp 100.000',
+    validUntil: '2026-07-20',
+    bgGradient: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+  },
+  {
+    id: 4,
+    title: 'Gratis Ongkir Se-Indonesia',
+    subtitle: 'Belanja minimal Rp 300.000, ongkir ditanggung VapoRex',
+    badge: 'FREE ONGKIR',
+    discount: 'Gratis',
+    validUntil: '2026-07-31',
+    bgGradient: 'linear-gradient(135deg, #10b981, #06b6d4)',
+  },
+];

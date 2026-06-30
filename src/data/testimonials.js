@@ -1,0 +1,42 @@
+export const testimonials = [
+  {
+    id: 1,
+    name: 'Budi Santoso',
+    avatar: null,
+    rating: 5,
+    text: 'Pelayanan VapoRex sangat memuaskan! Produk original dan pengiriman cepat. Recommended banget buat yang cari vape terpercaya.',
+    date: '2026-06-20',
+  },
+  {
+    id: 2,
+    name: 'Denny Prasetyo',
+    avatar: null,
+    rating: 4,
+    text: 'Harga bersaing dibanding toko lain, plus sering ada promo menarik. Packing rapi dan aman, barang sampai dalam kondisi sempurna.',
+    date: '2026-06-15',
+  },
+  {
+    id: 3,
+    name: 'Siti Nurhaliza',
+    avatar: null,
+    rating: 5,
+    text: 'Admin ramah dan fast response, bantuin pilih device yang cocok buat pemula. Sekarang jadi pelanggan setia VapoRex!',
+    date: '2026-06-10',
+  },
+  {
+    id: 4,
+    name: 'Fajar Hidayat',
+    avatar: null,
+    rating: 4,
+    text: 'Koleksi produknya lengkap, dari pod sampai mod semua ada. Coil replacement juga ready stock, jadi nggak perlu nunggu lama.',
+    date: '2026-06-05',
+  },
+  {
+    id: 5,
+    name: 'Anisa Putri',
+    avatar: null,
+    rating: 5,
+    text: 'Beli Caliburn G3 di sini, harga paling murah dan dapat garansi resmi. Pengiriman ke Surabaya cuma 2 hari. Top!',
+    date: '2026-05-28',
+  },
+];

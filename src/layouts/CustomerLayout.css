@@ -1,0 +1,20 @@
+.customer-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-base);
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 72px; /* offset for fixed navbar */
+  min-height: calc(100vh - 72px);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 64px;
+    min-height: calc(100vh - 64px);
+  }
+}

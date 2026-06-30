@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  address      String?
+  role         String   @default("customer") // "admin" or "customer"
+  createdAt    DateTime @default(now())
+  orders       Order[]
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  icon        String
+  description String?
+  products    Product[]
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  name          String
+  slug          String   @unique
+  description   String
+  price         Int
+  discountPrice Int?
+  stock         Int      @default(0)
+  images        String[] // Array of image URLs
+  categoryId    Int
+  category      Category @relation(fields: [categoryId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  orderItems    OrderItem[]
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  orderNumber String      @unique
+  userId      Int?
+  user        User?       @relation(fields: [userId], references: [id])
+  customerName String?    // For POS offline orders without a registered user
+  customerPhone String?
+  shippingAddress String?
+  total       Int
+  status      String      @default("Menunggu Pembayaran")
+  channel     String      @default("online") // "online" or "offline"
+  createdAt   DateTime    @default(now())
+  items       OrderItem[]
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+  qty       Int
+  price     Int
+}
