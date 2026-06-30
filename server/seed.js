@@ -34,11 +34,35 @@ async function main() {
     create: {
       name: 'Administrator',
       email: 'admin@vaporex.id',
-      passwordHash,
+      passwordHash: await bcrypt.hash('admin', salt),
       role: 'admin',
     },
   });
   console.log('Admin user created:', admin.email);
+
+  const kasir = await prisma.user.upsert({
+    where: { email: 'kasir@vaporex.id' },
+    update: {},
+    create: {
+      name: 'Kasir Store',
+      email: 'kasir@vaporex.id',
+      passwordHash: await bcrypt.hash('vaporexid', salt),
+      role: 'kasir',
+    },
+  });
+  console.log('Kasir user created:', kasir.email);
+
+  const customer = await prisma.user.upsert({
+    where: { email: 'rex@vaporex.id' },
+    update: {},
+    create: {
+      name: 'Rex Customer',
+      email: 'rex@vaporex.id',
+      passwordHash: await bcrypt.hash('vaporexid', salt),
+      role: 'customer',
+    },
+  });
+  console.log('Customer user created:', customer.email);
 
   // 2. Create Categories
   for (const cat of categories) {
