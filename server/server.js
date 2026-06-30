@@ -8,8 +8,8 @@ import midtransClient from 'midtrans-client';
 
 const snap = new midtransClient.Snap({
   isProduction: false,
-  serverKey: process.env.MIDTRANS_SERVER_KEY || 'SB-Mid-server-TbdJ0-x52E-oR-c5rVIfpBv0',
-  clientKey: process.env.MIDTRANS_CLIENT_KEY || 'SB-Mid-client-jJ2nJ5Q9yP1M-zU8'
+  serverKey: process.env.MIDTRANS_SERVER_KEY,
+  clientKey: process.env.MIDTRANS_CLIENT_KEY
 });
 
 const prisma = new PrismaClient();
