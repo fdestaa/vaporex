@@ -2,6 +2,8 @@
 
 VapoRex is a modern, full-stack e-commerce and Point of Sale (POS) application built specifically for vape stores. It features a beautiful, responsive storefront for customers, and a powerful hidden dashboard for store admins and cashiers to manage products, track online orders, and process offline in-store purchases.
 
+🌐 **Live Demo:** [https://vaporex-nine.vercel.app/](https://vaporex-nine.vercel.app/)
+
 ## 🚀 Features
 
 - **Customer Storefront:** Browse products, view categories, manage cart, and checkout seamlessly.
@@ -24,17 +26,17 @@ VapoRex is a modern, full-stack e-commerce and Point of Sale (POS) application b
 You can test the live application using the following demo accounts.
 
 **Admin Account** (Full access to dashboard, inventory, users, and POS)
-- **Login URL:** `/admin`
+- **Login URL:** [https://vaporex-nine.vercel.app/admin](https://vaporex-nine.vercel.app/admin)
 - **Email:** `admin@vaporex.id`
 - **Password:** `admin`
 
 **Kasir / Cashier Account** (Access to POS for in-store transactions)
-- **Login URL:** `/admin`
+- **Login URL:** [https://vaporex-nine.vercel.app/admin](https://vaporex-nine.vercel.app/admin)
 - **Email:** `kasir@vaporex.id`
 - **Password:** `vaporexid`
 
 **Customer Account** (Standard online shopping and checkout)
-- **Login URL:** `/login`
+- **Login URL:** [https://vaporex-nine.vercel.app/login](https://vaporex-nine.vercel.app/login)
 - **Email:** `rex@vaporex.id`
 - **Password:** `vaporexid`
 
