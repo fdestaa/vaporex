@@ -132,12 +132,12 @@ export default function POSPage() {
             <p>${new Date().toLocaleString('id-ID')}</p>
           </div>
           <div class="divider"></div>
-          ${cart.map(item => \`
+          ${cart.map(item => `
             <div class="item">
-              <div class="item-name">\${item.name} x\${item.qty}</div>
-              <div class="item-price">\${formatPrice((item.discountPrice || item.price) * item.qty)}</div>
+              <div class="item-name">${item.name} x${item.qty}</div>
+              <div class="item-price">${formatPrice((item.discountPrice || item.price) * item.qty)}</div>
             </div>
-          \`).join('')}
+          `).join('')}
           <div class="divider"></div>
           <div class="item total-section">
             <div class="item-name">Total</div>
