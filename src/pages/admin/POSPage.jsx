@@ -103,6 +103,81 @@ export default function POSPage() {
     }
   };
 
+  const handlePrintReceipt = () => {
+    if (cart.length === 0) return;
+    
+    const printWindow = window.open('', '_blank', 'width=400,height=600');
+    if (!printWindow) return alert('Pop-up terblokir oleh browser. Izinkan pop-up untuk mencetak struk.');
+
+    const receiptContent = `
+      <html>
+        <head>
+          <title>Struk Pembayaran - VapoRex</title>
+          <style>
+            body { font-family: 'Courier New', Courier, monospace; font-size: 14px; padding: 20px; color: #000; }
+            .header { text-align: center; margin-bottom: 20px; }
+            .header h2 { margin: 0; font-size: 24px; }
+            .divider { border-bottom: 1px dashed #000; margin: 10px 0; }
+            .item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+            .item-name { flex: 1; padding-right: 10px; }
+            .item-price { text-align: right; white-space: nowrap; }
+            .total-section { margin-top: 15px; font-weight: bold; }
+            .footer { text-align: center; margin-top: 30px; font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h2>VapoRex</h2>
+            <p>Struk Pembelian</p>
+            <p>${new Date().toLocaleString('id-ID')}</p>
+          </div>
+          <div class="divider"></div>
+          ${cart.map(item => \`
+            <div class="item">
+              <div class="item-name">\${item.name} x\${item.qty}</div>
+              <div class="item-price">\${formatPrice((item.discountPrice || item.price) * item.qty)}</div>
+            </div>
+          \`).join('')}
+          <div class="divider"></div>
+          <div class="item total-section">
+            <div class="item-name">Total</div>
+            <div class="item-price">${formatPrice(subtotal)}</div>
+          </div>
+          <div class="item">
+            <div class="item-name">Metode Pembayaran</div>
+            <div class="item-price">${paymentMethod}</div>
+          </div>
+          ${paymentMethod === 'Tunai' && cashReceived ? `
+            <div class="item">
+              <div class="item-name">Tunai</div>
+              <div class="item-price">${formatPrice(parseInt(cashReceived))}</div>
+            </div>
+            <div class="item">
+              <div class="item-name">Kembalian</div>
+              <div class="item-price">${formatPrice(change)}</div>
+            </div>
+          ` : ''}
+          <div class="divider"></div>
+          <div class="footer">
+            <p>Terima kasih atas kunjungan Anda!</p>
+            <p>Barang yang sudah dibeli tidak dapat ditukar/dikembalikan.</p>
+          </div>
+          <script>
+            window.onload = function() { 
+              setTimeout(() => {
+                window.print();
+                window.close();
+              }, 200);
+            }
+          </script>
+        </body>
+      </html>
+    `;
+
+    printWindow.document.write(receiptContent);
+    printWindow.document.close();
+  };
+
   return (
     <div className="pos-page">
       <div className="pos-layout">
@@ -216,7 +291,7 @@ export default function POSPage() {
             )}
 
             <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.5rem' }}>
-              <Button variant="secondary" icon={Printer} disabled={cart.length === 0} style={{ flex: 1 }}>Struk</Button>
+              <Button variant="secondary" icon={Printer} onClick={handlePrintReceipt} disabled={cart.length === 0} style={{ flex: 1 }}>Struk</Button>
               <Button variant="primary" onClick={handleCheckout} disabled={cart.length === 0} style={{ flex: 2 }}>Bayar & Selesai</Button>
             </div>
           </div>
